@@ -1,3 +1,5 @@
+
+
 #[cfg(test)]
 mod test_index;
 mod test_borrow;
@@ -8,6 +10,7 @@ mod test_loop;
 mod test_type;
 mod test_trait_object;
 mod test_str;
+mod test_iterator;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

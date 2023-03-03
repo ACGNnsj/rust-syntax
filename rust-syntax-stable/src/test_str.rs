@@ -5,4 +5,8 @@ fn test_str(){
     s1 += &s2;
     assert_eq!(s1, "Hello,world");
     println!("s1 = {}", s1);
+    let s3="wad";
+    s1+=s3;
+    println!("s3");
+    println!("{}",s1);
 }

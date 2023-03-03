@@ -43,9 +43,9 @@ fn test_borrow5() {
     let b = &mut a;
     let c: i32 = a;
     println!("{}", a);
-    core::i32::MIN;
-    std::i32::MIN;
-    i32::MIN;
+    // core::i32::MIN;
+    // std::i32::MIN;
+    // i32::MIN;
 }
 
 #[test]
