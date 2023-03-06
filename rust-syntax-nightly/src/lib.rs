@@ -4,6 +4,7 @@
 // #[cfg(feature="nightly")]
 // #[cfg(nightly)]
 mod test_generic;
+mod test_unstable_library;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

@@ -11,6 +11,14 @@ mod test_type;
 mod test_trait_object;
 mod test_str;
 mod test_iterator;
+mod test_smart_pointer;
+mod test_lifetime;
+mod test_option;
+pub mod test_trait;
+mod test_enum;
+mod test_ref;
+mod test_union;
+mod test_drop;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
