@@ -29,3 +29,37 @@ fn test_trait() {
     let cat = Cat { name: "cat" };
     test_sized(cat);
 }
+
+
+trait Foo {
+    fn foo(&self);
+
+    // default implementation
+    fn bar(&self) { println!("We called bar."); }
+}
+
+struct Baz;
+
+impl Foo for Baz {
+    fn foo(&self) { println!("foo"); }
+    fn bar(&self) {
+        println!("bar");
+    }
+}
+
+struct Bar;
+
+impl Foo for Bar {
+    fn foo(&self) { println!("foo"); }
+}
+
+
+#[test]
+fn test_trait2() {
+    let baz = Baz;
+    baz.foo();
+    baz.bar();
+    let bar = Bar;
+    bar.foo();
+    bar.bar();
+}

@@ -19,6 +19,8 @@ mod test_enum;
 mod test_ref;
 mod test_union;
 mod test_drop;
+mod test_operator;
+mod test_ufcs;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
