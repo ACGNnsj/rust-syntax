@@ -1,26 +1,48 @@
-
-
 #[cfg(test)]
 mod test_index;
+#[cfg(test)]
 mod test_borrow;
+#[cfg(test)]
 mod test_match;
+#[cfg(test)]
 mod test_num;
+#[cfg(test)]
 mod test_vec;
+#[cfg(test)]
 mod test_loop;
+#[cfg(test)]
 mod test_type;
+#[cfg(test)]
 mod test_trait_object;
+#[cfg(test)]
 mod test_str;
+#[cfg(test)]
 mod test_iterator;
+#[cfg(test)]
 mod test_smart_pointer;
+#[cfg(test)]
 mod test_lifetime;
+#[cfg(test)]
 mod test_option;
+#[cfg(test)]
 pub mod test_trait;
+#[cfg(test)]
 mod test_enum;
+#[cfg(test)]
 mod test_ref;
+#[cfg(test)]
 mod test_union;
+#[cfg(test)]
 mod test_drop;
+#[cfg(test)]
 mod test_operator;
+#[cfg(test)]
 mod test_ufcs;
+#[cfg(test)]
+mod test_raw_pointer;
+#[cfg(test)]
+mod test_tuple_struct;
+mod test_multi_thread;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
@@ -38,19 +60,23 @@ impl TestBuf {
         TestBuf { inner: OsString::new() }
     }
 }
+
 impl AsRef<OsStr> for TestBuf {
     #[inline]
     fn as_ref(&self) -> &OsStr {
         &self.inner[..]
     }
 }
+
 pub fn show<P: AsRef<OsStr>>(path: P) {
     println!("{:?}", path.as_ref());
 }
+
 pub struct MyWtf8Buf {
     bytes: Vec<u8>,
     is_known_utf8: bool,
 }
+
 impl MyWtf8Buf {
     pub fn new() -> MyWtf8Buf {
         MyWtf8Buf {
@@ -65,17 +91,21 @@ impl MyWtf8Buf {
         }
     }
 }
+
 pub struct MyBuf {
     pub inner: MyWtf8Buf,
 }
+
 impl MyBuf {
     pub fn new() -> MyBuf {
         MyBuf { inner: MyWtf8Buf::new() }
     }
 }
+
 pub struct TestString {
     inner: MyBuf,
 }
+
 impl TestString {
     pub fn new() -> TestString {
         TestString { inner: MyBuf::new() }
@@ -94,10 +124,10 @@ impl TestString {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_index() {
-        let string=TestString::new();
+        let string = TestString::new();
         // let x=string[..];
     }
 

@@ -1,2 +1,2 @@
 [workspace]
-members = ["rust-syntax-stable", "rust-syntax-nightly", "crate-demo"]
+members = ["rust-syntax-stable", "rust-syntax-nightly", "crate-demo", "public-function"]

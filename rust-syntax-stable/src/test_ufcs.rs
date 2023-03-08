@@ -61,3 +61,4 @@ fn test_ufcs() {
     <Bar as AnotherPrinter>::print();
     <Bar as SelfPrinter>::print(&Bar);
 }
+
