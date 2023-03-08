@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 public-function = { path = "../public-function" }
+public-struct = { path = "../public-struct" }

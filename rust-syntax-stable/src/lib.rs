@@ -42,7 +42,10 @@ mod test_ufcs;
 mod test_raw_pointer;
 #[cfg(test)]
 mod test_tuple_struct;
+
+
 mod test_multi_thread;
+mod test_result;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

@@ -21,9 +21,15 @@ fn count_prime_by_thread(n: u32, total_thread: u32, thread_num: u32) -> u32 {
     count
 }
 
-use std::thread;
-use std::sync::{Arc, mpsc, Mutex};
-use std::sync::atomic::{AtomicU32, AtomicUsize, Ordering};
+use std::{
+    thread,
+    sync::{
+        Arc, mpsc, Mutex,
+        atomic::{AtomicU32, AtomicUsize, Ordering},
+    },
+};
+
+use public_struct::error::MyError;
 
 #[test]
 fn test() {
@@ -38,14 +44,15 @@ fn test() {
     // let num = Box::new(0);
     let counter = Arc::new(AtomicU32::new(0));
     let start = std::time::Instant::now();
+    let (tx, rx) = mpsc::channel();
     for i in 0..TOTAL_THREAD {
         let arc_i = Arc::new(Mutex::new(i));
         let arc_sum = Arc::clone(&sum);
         let arc_counter = counter.clone();
         let arc_start = Arc::new(Mutex::new(start));
-        // let (tx, rx) = mpsc::channel();
         // long_live_i.push(i);
         // let static_i: &'static u32 = &mut long_live_i[i as usize];
+        let tx_thread = tx.clone();
         let handle = thread::spawn(move || {
             let mut thread_i = *arc_i.lock().unwrap();
             let count = count_prime_by_thread(N, TOTAL_THREAD, thread_i);
@@ -61,7 +68,9 @@ fn test() {
                 let end = std::time::Instant::now();
                 println!("sum:{}", thread_sum);
                 println!("time:{:?}", end - start);
+                tx_thread.send(thread_sum).expect("TODO: panic message");
             }
+            println!("continued");
             // tx.send(count).expect("TODO: panic message");
             // arc_result.push(count);
             /*if arc_result.len() == TOTAL_THREAD as usize {
@@ -81,4 +90,6 @@ fn test() {
     for handle in handles {
         handle.join().expect("TODO: panic message");
     }
+    let received = rx.recv().expect("TODO: panic message");
+    println!("received: {},total_duration:{:?}", received, std::time::Instant::now()-start);
 }

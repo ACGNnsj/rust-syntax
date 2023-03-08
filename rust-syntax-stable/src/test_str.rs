@@ -9,4 +9,5 @@ fn test_str(){
     s1+=s3;
     println!("s3");
     println!("{}",s1);
+    return ();
 }
