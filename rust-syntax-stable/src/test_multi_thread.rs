@@ -91,5 +91,5 @@ fn test() {
         handle.join().expect("TODO: panic message");
     }
     let received = rx.recv().expect("TODO: panic message");
-    println!("received: {},total_duration:{:?}", received, std::time::Instant::now()-start);
+    println!("received: {},total_duration:{:?}", received, std::time::Instant::now() - start);
 }
