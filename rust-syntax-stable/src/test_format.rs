@@ -10,4 +10,7 @@ fn test_format() {
     let score = 13454530.63342243;
     let (width, precision) = (25, 3);
     println!("Hello, {name}! Your score is {score:width$.precision$}", name = "Doe");
+    println!("{name: >10}{score:<20}");
+    println!("{name:0>width$}");
+    println!("{:_^15}", name);
 }

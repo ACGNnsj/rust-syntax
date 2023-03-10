@@ -8,9 +8,13 @@ fn test() {
         leaf0 = __cpuid(0);
     }
     println!("leaf0: {:?}", leaf0);
-    let ebx_ascii = hex_string_to_ascii_string(dec_to_hex(leaf0.ebx));
-    let ecx_ascii = hex_string_to_ascii_string(dec_to_hex(leaf0.ecx));
-    let edx_ascii = hex_string_to_ascii_string(dec_to_hex(leaf0.edx));
+    // let ebx_ascii = hex_string_to_ascii_string(dec_to_hex(leaf0.ebx));
+    let ebx_u8_slice = &leaf0.ebx.to_le_bytes();
+    let ebx_ascii = std::str::from_utf8(ebx_u8_slice).unwrap();
+    let edx_u8_slice: [u8; 4] = u32::to_le_bytes(leaf0.edx);
+    let edx_ascii = std::str::from_utf8(&edx_u8_slice).unwrap();
+    let ecx_u8_slice: &[u8] = &leaf0.ecx.to_le_bytes();
+    let ecx_ascii = std::str::from_utf8(ecx_u8_slice).unwrap();
     let vendor_string = format!("{}{}{}", ebx_ascii, edx_ascii, ecx_ascii);
     println!("vendor_string: {}", vendor_string);
     let leaf1;

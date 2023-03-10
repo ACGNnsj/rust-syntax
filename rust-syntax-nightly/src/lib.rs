@@ -1,5 +1,6 @@
 #![feature(const_trait_impl)]
 #![feature(default_free_fn)]
+#![feature(inline_const)]
 // #![allow(soft_unstable)]
 #![feature(test)]
 // #![feature(panic_abort)]
