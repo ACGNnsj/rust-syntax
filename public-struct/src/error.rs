@@ -3,8 +3,14 @@ use std::fmt::{Display, Formatter};
 
 #[derive(Debug)]
 pub struct MyError {
-    code: i32,
-    message: String,
+    pub code: i32,
+    pub message: String,
+}
+
+impl MyError {
+    pub fn new(code: i32, message: String) -> MyError {
+        MyError { code, message }
+    }
 }
 
 impl Display for MyError {

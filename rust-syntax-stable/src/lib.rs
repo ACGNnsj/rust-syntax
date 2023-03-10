@@ -48,8 +48,8 @@ mod test_multi_thread;
 mod test_result;
 mod test_format;
 mod test_cpuid;
-mod test_orphan_rule;
 mod test_asm;
+mod test_orphan_rule;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
