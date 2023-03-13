@@ -52,6 +52,7 @@ mod test_asm;
 mod test_orphan_rule;
 mod test_rdrand;
 mod test_calling_convention;
+pub mod test_path;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
