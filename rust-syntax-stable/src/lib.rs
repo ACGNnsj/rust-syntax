@@ -50,6 +50,8 @@ mod test_format;
 mod test_cpuid;
 mod test_asm;
 mod test_orphan_rule;
+mod test_rdrand;
+mod test_calling_convention;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

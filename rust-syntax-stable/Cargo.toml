@@ -2,9 +2,11 @@
 name = "rust-syntax-stable"
 version = "0.1.0"
 edition = "2021"
+build = "build.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 public-function = { path = "../public-function" }
 public-struct = { path = "../public-struct" }
+sprs = "0.11.0"

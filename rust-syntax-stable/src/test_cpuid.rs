@@ -5,7 +5,7 @@ use std::char::from_digit;
 fn test() {
     let leaf0;
     unsafe {
-        leaf0 = __cpuid(0);
+        leaf0 = crate::test_cpuid::__cpuid(0);
     }
     println!("leaf0: {:?}", leaf0);
     // let ebx_ascii = hex_string_to_ascii_string(dec_to_hex(leaf0.ebx));
