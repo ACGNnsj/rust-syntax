@@ -2,7 +2,8 @@ use sprs::{CsMat, TriMat};
 
 #[link(name = "spsolver")]
 extern "C" {
-    fn spsolver_LU(A: *const CdefMatrix, A_size: i32, B: *const CdefVector, B_size: i32, row: i32, col: i32) -> *mut CdefRetVector;
+    #[link_name="spsolver_LU"]
+    fn spsolver_lu(a: *const CdefMatrix, a_size: i32, b: *const CdefVector, b_size: i32, row: i32, col: i32) -> *mut CdefRetVector;
 }
 
 
@@ -52,7 +53,7 @@ fn cdef_vector_to_sparse(x: Vec<CdefVector>, nrows: usize, ncols: usize) -> CsMa
     tri.to_csc()
 }
 
-pub fn spsolver_lu(a: &CsMat<f64>, b: &CsMat<f64>) -> CsMat<f64> {
+pub fn spsolver_lu_wrapper(a: &CsMat<f64>, b: &CsMat<f64>) -> CsMat<f64> {
     let rows = a.rows() as i32;
     let cols = a.cols() as i32;
     let a = sparse_to_cdef_matrix(a);
@@ -60,7 +61,7 @@ pub fn spsolver_lu(a: &CsMat<f64>, b: &CsMat<f64>) -> CsMat<f64> {
     let a_len = a.len() as i32;
     let b_len = b.len() as i32;
     unsafe {
-        let x = spsolver_LU(a.as_ptr(), a_len, b.as_ptr(), b_len, rows, cols);
+        let x = spsolver_lu(a.as_ptr(), a_len, b.as_ptr(), b_len, rows, cols);
         // rebuild results as Vec<cdef_veoctr>
         let x_len = (*x).size as usize;
         let x_cap = x_len;
@@ -75,6 +76,6 @@ fn test() {
     println!("Hello, world!");
     let a: CsMat<f64> = CsMat::eye(3);
     let b: CsMat<f64> = CsMat::eye(3);
-    let c = spsolver_lu(&a, &b);
+    let c = spsolver_lu_wrapper(&a, &b);
     println!("{:?}", c);
 }

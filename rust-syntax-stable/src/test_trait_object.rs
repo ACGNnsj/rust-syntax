@@ -66,5 +66,6 @@ fn test_trait_object() {
     let c: &dyn Greeting = &Cat::new("Tom");
     let d: &dyn Greeting = &Dog;
     print_greeting_dynamic_alter(c);
+    print_greeting_static(Cat::new("t"));
     
 }

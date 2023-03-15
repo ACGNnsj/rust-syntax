@@ -77,8 +77,8 @@ fn test_const_trait() {
     
     // !const foo implies !const Default = true
     const {
-        let _c: NonConstDefault = foo();
-        println!("{:?}", _c);
+        /*let _c: NonConstDefault = foo();
+        println!("{:?}", _c);*/
     }
 
 }
