@@ -54,6 +54,7 @@ impl AnotherPrinter for Bar {}
 fn test_ufcs() {
     <()>::print(&());
     <Foo>::print(&Foo);
+    Foo.print();
     let t: (i32, u16) = (3, 4);
     <(i32, u16)>::print(&t);
     t.print();

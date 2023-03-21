@@ -47,7 +47,7 @@ fn test() {
     unsafe {
         leaf_80000000h = __cpuid(0x80000000);
     }
-    println!("leaf_80000002h: {:?}", leaf_80000000h);
+    println!("leaf_80000000h: {:?}", leaf_80000000h);
     if leaf_80000000h.eax < 0x80000004 {
         return;
     }
@@ -103,7 +103,6 @@ fn hex_string_to_ascii_string(hex: String) -> String {
     //     ascii = c.to_string() + &ascii;
     // }
     let len = hex.len();
-    let r = (0..len).step_by(2);
     for i in (0..len).step_by(2) {
         let rem = &hex[i..i + 2];
         let c = hex_to_char(rem).unwrap();

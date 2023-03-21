@@ -20,12 +20,13 @@ impl Greeting for Cat {
     }
 }
 
-struct Mouse{
+struct Mouse {
     name: String,
 }
+
 impl Greeting for Mouse {
     fn greeting(&self) -> String {
-        "Squeak!".to_string()+ &self.name
+        "Squeak!".to_string() + &self.name
     }
 }
 
@@ -49,6 +50,12 @@ fn print_greeting_dynamic_alter(g: &dyn Greeting) {
     println!("{}", g.greeting());
 }
 
+fn print_greeting_vec_dynamic(v: Vec<Box<dyn Greeting>>) {
+    for g in v {
+        println!("{}", g.greeting());
+    }
+}
+
 #[test]
 fn test_trait_object() {
     let cat: Cat = Cat { name: "Tom".to_string() };
@@ -67,5 +74,6 @@ fn test_trait_object() {
     let d: &dyn Greeting = &Dog;
     print_greeting_dynamic_alter(c);
     print_greeting_static(Cat::new("t"));
-    
+    let v: Vec<Box<dyn Greeting>> = vec![Box::new(Cat::new("Tom")), Box::new(Dog), Box::new(Mouse { name: "Jerry".to_string() })];
+    print_greeting_vec_dynamic(v);
 }

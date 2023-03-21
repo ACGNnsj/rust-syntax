@@ -9,4 +9,5 @@ build = "build.rs"
 [dependencies]
 public-function = { path = "../public-function" }
 public-struct = { path = "../public-struct" }
-sprs = "0.11.0"
+sprs = "^0.11.0"
+num = "^0.4.0"
