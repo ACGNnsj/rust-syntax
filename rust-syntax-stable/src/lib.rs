@@ -54,6 +54,10 @@ mod test_rdrand;
 mod test_calling_convention;
 pub mod test_path;
 mod test_symlink;
+mod test_move;
+mod test_never;
+mod test_arc;
+mod test_alias;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

@@ -13,6 +13,8 @@ impl <T:Copy> MyBox<T> {
     }
 }
 
+struct SingleElement<T>(T);
+
 #[test]
 fn test() {
     let mut x = 5;
@@ -30,6 +32,8 @@ fn test() {
 struct Bb(i32,i32);
 #[test]
 fn test2() {
-    let bb=Bb(1,2);
+    let mut bb=Bb(1,2);
     println!("bb = {:?}", bb);
+    let mut s=SingleElement(1);
+    println!("s = {:?}", s.0);
 }

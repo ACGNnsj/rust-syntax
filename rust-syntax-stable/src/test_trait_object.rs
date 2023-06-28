@@ -67,6 +67,8 @@ fn test_trait_object() {
     print_greeting_dynamic(Box::new(Cat { name: "Tom".to_string() }));
     print_greeting_dynamic(Box::new(Dog));
     print_greeting_dynamic(Box::new(Mouse { name: "Jerry".to_string() }));
+    let boxed_dog =Box::new(Dog);
+    print_greeting_dynamic(boxed_dog);
     print_greeting_dynamic_alter(&cat);
     print_greeting_dynamic_alter(&dog);
     print_greeting_dynamic_alter(&mouse);

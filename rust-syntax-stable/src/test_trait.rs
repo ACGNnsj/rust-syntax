@@ -30,7 +30,9 @@ fn test_trait() {
     test_sized(cat);
 }
 
-
+fn foo<F:Foo>(foo:&F){
+    println!("F");
+}
 trait Foo {
     fn foo(&self);
 
