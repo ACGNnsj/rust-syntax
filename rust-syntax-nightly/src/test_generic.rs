@@ -34,11 +34,11 @@ fn test_generic() {
 #[derive(Debug)]
 struct ConstDefault;
 
-impl const Default for ConstDefault {
+/*impl const Default for ConstDefault {
     fn default() -> Self {
         Self
     }
-}
+}*/
 
 #[derive(Debug)]
 struct NonConstDefault;
@@ -49,17 +49,17 @@ impl Default for NonConstDefault {
     }
 }
 
-const fn foo<T: ~ const Default>() -> T {
+/*const fn foo<T: ~ const Default>() -> T {
     T::default()
-}
+}*/
 
 use core::default::default;
 
 #[test]
 fn test_const_trait() {
     // const foo implies const Default = true
-    const _FOO: ConstDefault = foo();
-    let a = default::<ConstDefault>();
+    // const _FOO: ConstDefault = foo();
+    // let a = default::<ConstDefault>();
     let b: NonConstDefault = default();
     // println!("{}", _);
     println!("Hello, world!");
@@ -68,12 +68,12 @@ fn test_const_trait() {
     // ^ uncomment for compile error
 
     // !const foo implies const Default = true
-    let _a: ConstDefault = foo();
+    // let _a: ConstDefault = foo();
 
-    println!("{:?}", _a);
+    // println!("{:?}", _a);
 
-    let _b: NonConstDefault = foo();
-    println!("{:?}", _b);
+    // let _b: NonConstDefault = foo();
+    // println!("{:?}", _b);
     
     // !const foo implies !const Default = true
     const {

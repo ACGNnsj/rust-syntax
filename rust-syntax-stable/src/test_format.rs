@@ -13,4 +13,6 @@ fn test_format() {
     println!("{name: >10}{score:<20}");
     println!("{name:0>width$}");
     println!("{:_^15}", name);
+    let s=format!("{:?}", "Hello");
+    println!("{}", s);
 }

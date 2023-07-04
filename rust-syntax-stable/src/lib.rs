@@ -58,6 +58,11 @@ mod test_move;
 mod test_never;
 mod test_arc;
 mod test_alias;
+#[macro_use]
+mod test_macro;
+mod test_func_name;
+mod test_equal;
+mod test_static;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

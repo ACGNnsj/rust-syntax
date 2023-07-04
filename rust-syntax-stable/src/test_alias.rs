@@ -32,3 +32,4 @@ trait TypeBound {
 impl TypeBound for AliasType {
     type BoundType = AnotherAliasType;
 }
+
